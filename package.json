@@ -9,8 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@mantine/core": "^7.17.3",
+    "@mantine/dropzone": "^7.17.3",
+    "@mantine/hooks": "^7.17.3",
+    "@tabler/icons-react": "^3.31.0",
+    "@tailwindcss/postcss": "^4.0.17",
+    "konva": "^9.3.20",
+    "lucide-react": "^0.484.0",
+    "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "react-konva": "^19.0.3",
+    "react-player": "^2.16.0",
+    "tailwindcss": "^4.0.17"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.3",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "webpack": "^5.98.0"
   }
 }
