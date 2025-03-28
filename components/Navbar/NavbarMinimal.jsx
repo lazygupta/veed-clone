@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from 'react';
-import Brandkit from '../Icons/Brandkit';
 import Video from '../Icons/Video';
 import Audio from '../Icons/Audio';
 import Subtitles from '../Icons/Subtitles';
@@ -9,6 +8,7 @@ import Text from '../Icons/Text';
 import Element from '../Icons/Element';
 import Settings from '../Icons/Setting';
 import Logo from '../Icons/Logo';
+import Brandkit from '../Icons/BrandKit';
 
 function NavbarLink({ icon: Icon, label, active, onClick }) {
   return (

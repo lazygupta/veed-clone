@@ -34,7 +34,12 @@ export default function DraggableResizableCanvas() {
   const [isResizing, setIsResizing] = useState(false);
   const [resizeHandle, setResizeHandle] = useState(null);
 
-  const { startTime, endTime } = useTimeContext();
+  const { startTime, endTime, setEndTime } = useTimeContext();
+  
+  useEffect( () => {
+    console.log(startTime);
+    console.log(endTime);
+  },[startTime],[endTime])
 
   const {currentTime,setCurrentTime, duration, setDuration }= useTimeContext();
 
@@ -58,21 +63,32 @@ export default function DraggableResizableCanvas() {
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
-      if (videoRef.current.currentTime < startTime) {
-        videoRef.current.currentTime = startTime; 
+      // Dynamically set effective start and end times
+      const effectiveStartTime = startTime || 0;
+      const effectiveEndTime = endTime || duration; // Use duration as default if endTime is 0
+  
+      // Ensure the video doesn't loop incorrectly
+      if (videoRef.current.currentTime < effectiveStartTime) {
+        videoRef.current.currentTime = effectiveStartTime;
       }
-      if (videoRef.current.currentTime > endTime) {
-        videoRef.current.pause(); 
+      if (videoRef.current.currentTime >= effectiveEndTime) {
+        videoRef.current.pause(); // Stop at endTime
         setIsPlaying(false);
       }
     }
   };
-
+  
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.currentTime = startTime; 
+      videoRef.current.addEventListener("loadedmetadata", () => {
+        setDuration(videoRef.current.duration); // Set video duration in context
+        if (endTime === 0) {
+          setEndTime(videoRef.current.duration); // Default to full duration if endTime isn't set
+        }
+        videoRef.current.currentTime = startTime || 0; // Start from startTime or 0
+      });
     }
-  }, [startTime, endTime]);
+  }, [fileUrl, startTime, endTime]);
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
