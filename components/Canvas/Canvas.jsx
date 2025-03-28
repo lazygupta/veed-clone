@@ -60,17 +60,25 @@ export default function DraggableResizableCanvas() {
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       if (videoRef.current.currentTime < startTime) {
-        videoRef.current.currentTime = startTime; // Ensure playback starts at startTime
+        videoRef.current.currentTime = startTime; 
       }
       if (videoRef.current.currentTime > endTime) {
-        videoRef.current.pause(); // Pause playback at endTime
+        videoRef.current.pause(); 
         setIsPlaying(false);
       }
     }
   };
+
+  useEffect( () =>{
+    console.log(startTime);
+    console.log(endTime);
+    
+    
+  },[startTime],[endTime])
+
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.currentTime = startTime; // Reset video to startTime on startTime change
+      videoRef.current.currentTime = startTime; 
     }
   }, [startTime, endTime]);
 

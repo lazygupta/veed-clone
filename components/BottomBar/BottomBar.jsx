@@ -22,6 +22,9 @@ const BottomBar = () => {
                     {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                 </button>
                 <Forward/>
+                <div>
+                    Hello
+                </div>
             </div>
             <div className='h-1/2 '>
                 Timestamp
