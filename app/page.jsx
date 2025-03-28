@@ -9,6 +9,7 @@ import { FileProvider } from "@/FileContext/FileContext";
 import { SizeProvider } from "@/FileContext/SizeContext";
 import { TimeProvider } from "@/FileContext/TimeContext";
 import { PlaybackProvider } from "@/FileContext/TogglePlayback";
+import { Heart } from "lucide-react";
 
 export default function Home() {
 
@@ -42,7 +43,13 @@ export default function Home() {
               {/* Bottombar Starting point */}
               <div className="fixed bottom-0 left-20 w-full z-100 ">
                 <BottomBar />
+                <div className="text-center">
+                  <p className="fixed left-170 bottom-0 text-gray-600 flex ">
+                    Made with <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" /> from lazyrabbit
+                  </p>
+                </div>
               </div>
+
             </div>
           </SizeProvider>
         </TimeProvider>

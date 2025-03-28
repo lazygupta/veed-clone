@@ -14,8 +14,8 @@ export default function DraggableResizableCanvas() {
   const { isPlaying, setIsPlaying } = usePlaybackContext();
   const [image, setImage] = useState(null);
   const [mediaProps, setMediaProps] = useState({
-    x: 10,
-    y: 10,
+    x: 20,
+    y: 20,
     width: 680,
     height: 380,
   });
@@ -36,8 +36,7 @@ export default function DraggableResizableCanvas() {
 
   const { startTime, endTime } = useTimeContext();
 
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const {currentTime,setCurrentTime, duration, setDuration }= useTimeContext();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -68,13 +67,6 @@ export default function DraggableResizableCanvas() {
       }
     }
   };
-
-  useEffect( () =>{
-    console.log(startTime);
-    console.log(endTime);
-    
-    
-  },[startTime],[endTime])
 
   useEffect(() => {
     if (videoRef.current) {
@@ -297,12 +289,6 @@ export default function DraggableResizableCanvas() {
       />
       {fileType === "video" && (
         <div className="flex flex-col mt-4">
-          <div className="mt-2">
-            <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
-          </div>
-          <button onClick={() => (videoRef.current.currentTime = startTime)}>
-            Restart
-          </button>
         </div>
       )}
     </>
