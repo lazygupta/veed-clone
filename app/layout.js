@@ -5,8 +5,8 @@ import "./globals.css";
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import '@mantine/dropzone/styles.css';
 export const metadata = {
-  title: 'My Mantine app',
-  description: 'I have followed setup instructions carefully',
+  title: 'Veed.io',
+  description: 'lazyrabbit welcomes you ♥',
 };
 
 export default function RootLayout({
