@@ -25,7 +25,6 @@ export default function Home() {
                 <div className="z-10 bg-[#fcfdff]">
                   <LeftMenu />
                 </div>
-                {/* Main Content staerting point */}
                 <div className="flex flex-1 flex-col">
                   <div className="flex-1 relative bg-[#f7f6f9]">
                     <div className="">
@@ -40,7 +39,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Bottombar Starting point */}
               <div className="fixed bottom-0 left-20 w-full z-100 ">
                 <BottomBar />
                 <div className="text-center">

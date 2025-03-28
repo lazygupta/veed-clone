@@ -2,17 +2,17 @@ import React from "react";
 import FileUpload from "../FileUpload/FileUpload";
 import { useSizeContext } from "@/FileContext/SizeContext";
 import { useFileContext } from "@/FileContext/FileContext";
-import { useTimeContext } from "@/FileContext/TimeContext"; // Import TimeContext
+import { useTimeContext } from "@/FileContext/TimeContext"; 
 import { NumberInput, Stack } from "@mantine/core";
 import { Clock } from "lucide-react";
 
 const LeftMenu = () => {
   const { width, setWidth, height, setHeight } = useSizeContext();
   const { fileUrl } = useFileContext();
-  const { startTime, setStartTime, endTime, setEndTime } = useTimeContext(); // Use TimeContext
+  const { startTime, setStartTime, endTime, setEndTime } = useTimeContext();
 
-  const handleWidthChange = (e) => setWidth(e); // Update width
-  const handleHeightChange = (e) => setHeight(e); // Update height
+  const handleWidthChange = (e) => setWidth(e); 
+  const handleHeightChange = (e) => setHeight(e); 
 
   const handleStartTimeChange = (value) => {
     const newTime = parseFloat(value);

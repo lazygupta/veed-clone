@@ -98,7 +98,6 @@ export default function DraggableResizableCanvas() {
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    // Check if mouse is on any of the resize handles
     const corners = getCorners();
     for (const corner in corners) {
       const { x, y } = corners[corner];
@@ -114,7 +113,6 @@ export default function DraggableResizableCanvas() {
       }
     }
 
-    // Check if the mouse is within the image bounds for dragging
     if (
       mouseX >= mediaProps.x &&
       mouseX <= mediaProps.x + mediaProps.width &&
@@ -147,9 +145,9 @@ export default function DraggableResizableCanvas() {
           mouseY <= y + HANDLE_SIZE / 2
         ) {
           if (corner === "top-left" || corner === "bottom-right") {
-            cursor = "nwse-resize"; // Diagonal double-sided arrow
+            cursor = "nwse-resize"; 
           } else if (corner === "top-right" || corner === "bottom-left") {
-            cursor = "nesw-resize"; // Diagonal double-sided arrow
+            cursor = "nesw-resize"; 
           }
           break;
         }

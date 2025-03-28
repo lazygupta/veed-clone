@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext } from "react";
 
-// Create the context
+
 const TimeContext = createContext();
 
-// Context provider component
+
 export const TimeProvider = ({ children }) => {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
@@ -19,7 +19,6 @@ export const TimeProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the context
-export const useTimeContext = () => {
+export const useTimeContext = () => { // Time ke lie
   return useContext(TimeContext);
 };

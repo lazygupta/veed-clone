@@ -1,6 +1,5 @@
 import { usePlaybackContext } from '@/FileContext/TogglePlayback'
-import { IconRewindBackward5, IconStackBackward } from '@tabler/icons-react';
-import { FastForward, Heart, Pause, Play } from 'lucide-react';
+import { Pause, Play } from 'lucide-react';
 import React from 'react'
 import Forward from '../Icons/Forward';
 import Backward from '../Icons/Backward';

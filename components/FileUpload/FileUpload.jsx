@@ -45,7 +45,7 @@ export default function FileUpload() {
     if (url) {
       setFileUrl(url);
       setFileType(url.match(/\.(mp4|mov|avi|mkv)$/i) ? "video" : "image");
-      setFileName(url.split("/").pop()); // Extract file name from URL
+      setFileName(url.split("/").pop()); 
     }
   };
 
