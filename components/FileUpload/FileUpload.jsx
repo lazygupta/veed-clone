@@ -5,7 +5,7 @@ import { UploadCloudIcon } from "lucide-react"
 import { useFileContext } from "../../FileContext/FileContext"
 
 export default function FileUpload() {
-  const { setFileUrl, setFileType } = useFileContext()
+  const {fileName, setFileName, setFileUrl, setFileType } = useFileContext()
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef(null)
 
@@ -41,24 +41,33 @@ export default function FileUpload() {
   }
 
   const handleLinkImport = () => {
-    const url = prompt("Enter file URL:")
+    const url = prompt("Enter file URL:");
     if (url) {
-      setFileUrl(url)
-      setFileType(url.match(/\.(mp4|mov|avi|mkv)$/i) ? "video" : "image")
+      setFileUrl(url);
+      setFileType(url.match(/\.(mp4|mov|avi|mkv)$/i) ? "video" : "image");
+      setFileName(url.split("/").pop()); // Extract file name from URL
     }
-  }
+  };
+
 
   const processFile = (file) => {
-    setFileUrl(URL.createObjectURL(file))
-    setFileType(file.type.startsWith("video") ? "video" : "image")
-  }
+    if (!file) return;
+    const isValidType = file.type.startsWith("video") || file.type.startsWith("image");
+    if (!isValidType) {
+      alert("Invalid file type. Please upload an image or video.");
+      return;
+    }
+
+    setFileUrl(URL.createObjectURL(file));
+    setFileType(file.type.startsWith("video") ? "video" : "image");
+    setFileName(file.name);
+  };
 
   return (
     <div className="flex justify-center items-center max-h-[200px] p-4 cursor-pointer">
       <div
-        className={`border border-gray-200 rounded-lg w-full max-w-md p-8 flex flex-col items-center justify-center gap-2 transition-colors ${
-          isDragging ? "bg-gray-50 border-gray-300" : "bg-white"
-        }`}
+        className={`border border-gray-200 rounded-lg w-full max-w-md p-8 flex flex-col items-center justify-center gap-2 transition-colors ${isDragging ? "bg-gray-50 border-gray-300" : "bg-white"
+          }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
